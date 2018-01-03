@@ -1,0 +1,166 @@
+*{
+    margin: 0;
+    padding: 0;
+    font: 12px arial,sans-serif;
+    color: #545454;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    
+}
+
+#layout-container {
+    width: 960px;
+    background-color: #EEE;
+    margin: 0 auto;
+}
+
+#header-container {
+    
+    padding: 10px;
+}
+
+#header-container div {
+    display: inline-block;
+}
+
+#brand-container {
+    display: inline-block;
+}
+
+#brand-container a {
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+#nav-bar-container ul li {
+    display: inline-block;
+}
+
+#nav-bar-container ul li a {
+    padding-left: 11px;
+    padding-right: 11px;
+    border-left: 1px solid #545454;
+}
+
+#translation-option-container {
+    display: inline-block;
+    float: right;
+}
+
+#translation-option-container a {
+    padding: 3px 20px;
+    background-color: #7278bf;
+    color: #FFF;
+}
+
+#translation-option-container ul li {
+    display: inline-block;
+    padding-left: 2px;
+}
+
+#content-container {
+    min-height: 500px;
+    background-color: #FFF;
+    padding: 10px 10px 0px 10px;
+}
+
+#footer-container {
+    background-color: #EEE;
+    text-align: center;
+    padding: 4px 0;
+}
+
+.proverb-container {
+    border: 1px solid #98a4e0;
+    margin-bottom: 10px;
+}
+
+.proverb-container h3 {
+    
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px 15px;
+    background-color: #668cbb;
+    color: #FFF;
+}
+
+.proverb-tags-container, .meaning-container, .socia-btn-container {
+    
+    padding: 10px 15px;
+}
+
+.proverb-tags-container b, .meaning-container b, #comments-container b, .socia-btn-container b {
+    font-weight: bold;
+}
+
+.proverb-tags-container > a {
+    
+    background-color: #ecef48;
+    font-size: 10px;
+    padding: 1px 7px;
+    margin-left: 4px;
+}
+
+.meaning-container {
+    line-height: 20px;
+}
+
+#comments-container, #comment-form-container {
+    
+    margin: 10px 15px;
+}
+
+.comment-container {
+    margin-top: 5px;
+    padding: 10px 15px;
+    border: 1px solid #EEE;
+}
+
+.commenter-container {
+    padding-top: 10px;
+    text-align: right;
+    border-top: 1px solid #EEE;
+}
+
+.comment {
+    padding-bottom: 10px;
+}
+
+#comment-form-container textarea {
+    width: 100%;
+    height: 200px;
+    margin-top: 5px;
+}
+
+#comment-form-container input {
+    width: 100%;
+    margin-bottom: 3px;
+}
+
+#comment-form-container table {
+    width: 100%;
+}
+
+#submitBtn {
+    float: right;
+    width: 100px !important;
+    cursor: pointer;
+    padding: 3px 5px;
+}
+
+#error-message-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#error-message-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Note that scanPeriod is set to 30 seconds so that config file will
+   be automatically reloaded if needed and take effect every 30 seconds.
+-->
+<configuration scan="true" scanPeriod="30 seconds" >
+    
+    <property name="LOG_FILE_BASE_DIR" value="logs/proverbs/%d{yyyy/MM/dd}" />
+    
+    <property name="DEFAULT_PATTERN" value="%n%d{HH:mm:ss.SSS, ${logback.timezone:-America/Los_Angeles}} %-5level thread=%t [%logger{10}:%line] %msg%n" />
+    
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${DATA_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    
+    <!--Webapp logging file-->
+    <appender name="WEBAPP" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE_BASE_DIR}/webapp.log.gz</fileNamePattern>
+        </rollingPolicy>
+        
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${DEFAULT_PATTERN}</pattern> 
+        </encoder>
+    </appender>
+    
+    <!--Separate logging file for atasozleri.gen.tr crawler-->
+    <appender name="ATASOZLERIDOTGENDOTTR_CRAWLER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE_BASE_DIR}/atasozleridotgendottr_crawler.log.gz</fileNamePattern>
+        </rollingPolicy>
+        
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${DEFAULT_PATTERN}</pattern> 
+        </encoder>
+    </appender>
+    
+    <logger name="net.manirai.proverbs.crawlers.AtasozleriDotGenDotTrCrawler" level="info" additivity="false">
+        <appender-ref ref="ATASOZLERIDOTGENDOTTR_CRAWLER" />
+    </logger>
+    
+    <root level="debug">
+        <appender-ref ref="WEBAPP" />
+    </root>
+    
+</configuration>

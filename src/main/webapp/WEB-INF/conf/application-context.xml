@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+    <context:property-placeholder location="/WEB-INF/conf/application.properties"/>
+    
+    <import resource="application-persistence-context.xml"/>
+    
+    <context:component-scan base-package="net.manirai.proverbs.entities"/>
+    <context:component-scan base-package="net.manirai.proverbs.crawlers"/>
+    <context:component-scan base-package="net.manirai.proverbs.events.listeners"/>
+    <context:component-scan base-package="net.manirai.proverbs.services"/>
+    <context:component-scan base-package="net.manirai.proverbs.exceptions.handlers"/>
+    
+    <!--Creates task scheduler bean with pooled threads-->
+    <bean name="taskScheduler" class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">
+        <property name="poolSize" value="${scheduler.thread.pool.size}"/>
+    </bean>
+    
+    <!--Enabling annotation-driven task scheduling-->
+    <task:annotation-driven scheduler="taskScheduler"/>
+    
+    <!--Creates task executer bean with pooled threads for each crawler-->
+    <bean name="crawlerTaskExecutor" scope="prototype" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <qualifier value="crawlerTaskExecutor"/>
+    </bean>
+    
+    <!--Configuring a Bean Validation Provider-->
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+</beans>
