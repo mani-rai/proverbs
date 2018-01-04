@@ -21,4 +21,7 @@ Sample java web application with proverb crawlers.
 - Build war using maven (mvn package).
 - Copy war file to tomcat webapp directory.
 - Run server
-- Visit localhost:<port>/proverbs
+- Visit localhost:<port>/proverbs.
+  
+## 5. Remaining Tasks
+- [ ] Develop & implement caching strategy.
