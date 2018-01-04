@@ -16,3 +16,9 @@ Sample java web application with proverb crawlers.
 - jsoup: For HTML parser.
 - Logback: For logging/auditing.
 - Jackson: For serialization/deserialization POJO to/from JSON.
+
+## 4. Usage
+- Build war using maven (mvn package).
+- Copy war file to tomcat webapp directory.
+- Run server
+- Visit localhost:<port>/proverbs
